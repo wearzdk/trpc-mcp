@@ -1,5 +1,6 @@
-# trpc-mcp
-Serve tRPC routes as via MCP.
+# tRPC <-> MCP
+
+Serve tRPC routes via MCP.
 
 ## Usage
 
@@ -27,6 +28,7 @@ export const appRouter = t.router({
 ```ts
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { createMcpServer } from 'trpc-mcp';
+
 const mcpServer = createMcpServer(
   { name: 'trpc-mcp-example', version: '0.0.1' },
   appRouter,
