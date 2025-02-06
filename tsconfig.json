@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "target": "ES2023",
+    "outDir": "./lib/",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "declarationDir": "./lib/types",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "files": ["./src/index.ts", "./src/example.ts"]
+}
