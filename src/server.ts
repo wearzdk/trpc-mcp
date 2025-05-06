@@ -50,7 +50,7 @@ export function createMcpServer<
     // Find procedure in router
     // @ts-expect-error wrangle types later
     const procedure: AnyProcedure = tool.pathInRouter.reduce(
-      // @ts-expect-error wrangle types later
+      // @ts-ignore
       (acc, part) => acc?.[part],
       caller,
     );

@@ -2,8 +2,30 @@
   "name": "trpc-mcp",
   "type": "module",
   "scripts": {
+    "build": "tsup",
     "lint": "biome check .",
+    "release": "bumpp",
     "lint:fix": "biome check --write ."
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Jacse/trpc-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/Jacse/trpc-mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jacse/trpc-mcp.git"
+  },
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "volta": {
     "node": "22.13.1",
@@ -12,11 +34,12 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/node": "22.13.1",
+    "tsup": "^8.4.0",
     "typescript": "^5.7.3",
     "zod": "^3.24.1"
   },
   "peerDependencies": {
-    "@trpc/server": "11.0.0-rc.502",
+    "@trpc/server": "^11",
     "zod": "^3.24.1"
   },
   "dependencies": {
