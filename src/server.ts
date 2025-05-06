@@ -1,17 +1,17 @@
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import {
   CallToolRequestSchema,
   type Implementation,
   ListToolsRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js";
+} from '@modelcontextprotocol/sdk/types.js';
 import type {
   AnyProcedure,
   AnyRootTypes,
   Router,
   RouterRecord,
-} from "@trpc/server/unstable-core-do-not-import";
+} from '@trpc/server/unstable-core-do-not-import';
 
-import { tRcpRouterToMcpToolsList } from "./tools.js";
+import { tRcpRouterToMcpToolsList } from './tools.js';
 
 export function createMcpServer<
   TRoot extends AnyRootTypes,
@@ -23,7 +23,7 @@ export function createMcpServer<
     defaultNameSeparator?: string;
   },
 ): Server {
-  const nameSeparator = options?.defaultNameSeparator ?? "__";
+  const nameSeparator = options?.defaultNameSeparator ?? '__';
   const tools = tRcpRouterToMcpToolsList(appRouter, nameSeparator);
   const caller = appRouter.createCaller({});
 
@@ -44,7 +44,7 @@ export function createMcpServer<
     const tool = tools.find((t) => t.name === name);
 
     if (!tool) {
-      return { content: [{ type: "text", text: "Could not find tool" }] };
+      return { content: [{ type: 'text', text: 'Could not find tool' }] };
     }
 
     // Find procedure in router

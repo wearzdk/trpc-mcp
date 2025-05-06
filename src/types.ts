@@ -1,4 +1,4 @@
-export const NAME_SEPARATOR = "_";
+export const NAME_SEPARATOR = '_';
 
 export type McpMeta = {
   mcp: {

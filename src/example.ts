@@ -1,7 +1,7 @@
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { initTRPC } from "@trpc/server";
-import { z } from "zod";
-import { type McpMeta, createMcpServer } from "./index.js";
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { initTRPC } from '@trpc/server';
+import { z } from 'zod';
+import { type McpMeta, createMcpServer } from './index.js';
 
 const t = initTRPC.meta<McpMeta>().create(); /* 👈 */
 
@@ -10,13 +10,13 @@ const appRouter = t.router({
     .meta({
       mcp: {
         enabled: true,
-        name: "give_feedback",
-        description: "Give feedback to the tool provider",
+        name: 'give_feedback',
+        description: 'Give feedback to the tool provider',
       },
     })
     .input(z.object({ message: z.string() }))
     .query(async ({ input }) => {
-      return { status: "success" };
+      return { status: 'success' };
     }),
   userInfo: {
     get: t.procedure
@@ -24,9 +24,9 @@ const appRouter = t.router({
       .input(z.object({ name: z.string() }))
       .query(async ({ input }) => {
         return {
-          name: "John Doe",
+          name: 'John Doe',
           age: 30,
-          email: "johndoe@example.com",
+          email: 'johndoe@example.com',
         };
       }),
     address: {
@@ -34,8 +34,8 @@ const appRouter = t.router({
         .input(z.object({ city: z.string() }))
         .query(async ({ input }) => {
           return {
-            city: "New York",
-            country: "USA",
+            city: 'New York',
+            country: 'USA',
           };
         }),
     },
@@ -43,7 +43,7 @@ const appRouter = t.router({
 });
 
 const mcpServer = createMcpServer(
-  { name: "trpc-mcp-example", version: "0.0.1" },
+  { name: 'trpc-mcp-example', version: '0.0.1' },
   appRouter,
 );
 

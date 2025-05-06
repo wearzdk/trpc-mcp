@@ -2,15 +2,15 @@ import type {
   AnyRootTypes,
   Router,
   RouterRecord,
-} from "@trpc/server/unstable-core-do-not-import";
+} from '@trpc/server/unstable-core-do-not-import';
+import { type AnyZodObject, z } from 'zod';
 import {
   type JsonSchema7ObjectType,
   type JsonSchema7StringType,
   type JsonSchema7Type,
   zodToJsonSchema,
-} from "zod-to-json-schema";
-import { McpMeta } from "./types.js";
-import { AnyZodObject, z } from "zod";
+} from 'zod-to-json-schema';
+import type { McpMeta } from './types.js';
 
 type Tool = {
   name: string;
@@ -34,7 +34,7 @@ function tRpcRouterRecordToMcpToolsList(
   const procedures = Object.entries(routerRecord);
 
   for (const [name, value] of procedures) {
-    if (value._def && "procedure" in value._def) {
+    if (value._def && 'procedure' in value._def) {
       // @ts-expect-error The types seems to be incorrect
       const inputs = value._def.inputs as AnyZodObject[];
 
@@ -50,7 +50,7 @@ function tRpcRouterRecordToMcpToolsList(
         name:
           meta.mcp.name ??
           pathInRouter.reduce((acc, curr) => acc + nameSeparator + curr),
-        description: meta.mcp.description ?? "",
+        description: meta.mcp.description ?? '',
         pathInRouter,
       };
 
@@ -59,14 +59,14 @@ function tRpcRouterRecordToMcpToolsList(
           | JsonSchema7ObjectType
           | JsonSchema7StringType;
 
-        if (jsonSchema.type === "object") {
+        if (jsonSchema.type === 'object') {
           const { type, properties = {}, required = [] } = jsonSchema;
           // MCP apparently only support object input types rn
           tool.inputSchema = { type, properties, required };
           tools.push(tool);
         } else {
           console.error(
-            "Trying to add MCP server for procedure with non-object input type",
+            'Trying to add MCP server for procedure with non-object input type',
           );
         }
       }

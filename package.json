@@ -1,6 +1,10 @@
 {
   "name": "trpc-mcp",
   "type": "module",
+  "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
+  },
   "volta": {
     "node": "22.13.1",
     "pnpm": "10.2.0"
