@@ -4,8 +4,8 @@
   "version": "0.0.2",
   "scripts": {
     "build": "tsup",
-    "prerelease": "npm run build",
-    "release": "bumpp",
+    "prepublishOnly": "pnpm run build",
+    "release": "bumpp && pnpm publish",
     "lint": "biome check .",
     "lint:fix": "biome check --write ."
   },
