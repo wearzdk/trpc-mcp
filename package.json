@@ -1,5 +1,5 @@
 {
-  "name": "@wearzdk/trpc-mcp",
+  "name": "trpc-mcp",
   "type": "module",
   "version": "0.0.2",
   "scripts": {
