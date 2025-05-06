@@ -4,8 +4,9 @@
   "version": "0.0.2",
   "scripts": {
     "build": "tsup",
-    "lint": "biome check .",
+    "prerelease": "npm run build",
     "release": "bumpp",
+    "lint": "biome check .",
     "lint:fix": "biome check --write ."
   },
   "license": "MIT",
