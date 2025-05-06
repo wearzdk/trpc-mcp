@@ -11,7 +11,7 @@ import type {
   RouterRecord,
 } from '@trpc/server/unstable-core-do-not-import';
 
-import { tRcpRouterToMcpToolsList } from './tools.js';
+import { tRpcRouterToMcpToolsList } from './tools.js';
 
 export function createMcpServer<
   TRoot extends AnyRootTypes,
@@ -24,7 +24,7 @@ export function createMcpServer<
   },
 ): Server {
   const nameSeparator = options?.defaultNameSeparator ?? '__';
-  const tools = tRcpRouterToMcpToolsList(appRouter, nameSeparator);
+  const tools = tRpcRouterToMcpToolsList(appRouter, nameSeparator);
   const caller = appRouter.createCaller({});
 
   const server = new Server(implementation, {
@@ -56,7 +56,8 @@ export function createMcpServer<
     );
 
     // @ts-expect-error wrangle types later
-    return procedure(args);
+    const result = await procedure(args);
+    return { content: [{ type: 'text', text: JSON.stringify(result) }] };
   });
 
   return server;

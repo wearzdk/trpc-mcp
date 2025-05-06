@@ -82,7 +82,7 @@ function tRpcRouterRecordToMcpToolsList(
   return tools;
 }
 
-export function tRcpRouterToMcpToolsList<
+export function tRpcRouterToMcpToolsList<
   TRoot extends AnyRootTypes,
   TRecord extends RouterRecord,
 >(router: Router<TRoot, TRecord>, nameSeparator: string): Tool[] {
